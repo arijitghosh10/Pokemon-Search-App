@@ -5,9 +5,10 @@ const side1img = document.querySelector('#side1img')
 
 searchBtn.addEventListener('submit', async function(e){
     e.preventDefault()
-    const searchTerm = inputTxt.value;
+    const searchTerm = inputTxt.value.toLowerCase();
     if(searchTerm===""){
         alert('No data found')
+        return
     }
     await axios.get(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`).then(res =>{
         statistics(res.data)
